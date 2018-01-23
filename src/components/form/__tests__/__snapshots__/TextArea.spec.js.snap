@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form/TextArea should running no error 1`] = `
+<form
+  class="form"
+>
+  <div
+    class="form__control"
+  >
+    <textarea
+      class="text-area"
+      id="buah1"
+    />
+  </div>
+</form>
+`;

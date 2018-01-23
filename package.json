@@ -1,0 +1,56 @@
+{
+  "name": "@deboxsoft/webapp-components",
+  "version": "1.0.0",
+  "description": "component ui web base foundation framework.",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.com/debox-web-component"
+  },
+  "keywords": [
+    "ui",
+    "component",
+    "react"
+  ],
+  "author": "Nurdiansyah",
+  "dependencies": {
+    "@deboxsoft/core": "1.0.*",
+    "@deboxsoft/webapp-core": "1.0.*",
+    "form-data-to-object": "^0.2.0",
+    "detect-passive-events": "1.0.4",
+    "tween-functions": "1.2.0",
+    "keycode": "^2.1.7",
+    "moment": "^2.20.1",
+    "popper.js": "^1.12.3",
+    "react-onclickoutside": "6.6.*",
+    "react-overlays": "^0.8.3",
+    "react-popper": "^0.7.4",
+    "react-tippy": "^1.2.1",
+    "react-transition-group": "^2.2.1",
+    "recompose": "^0.26.0",
+    "tippy.js": "^1.2.0"
+  },
+  "devDependencies": {
+    "@deboxsoft/devel-webapp": "^1.0.0",
+    "jest": "*"
+  },
+  "scripts": {
+    "lint": "npm run eslint -- --fix && npm run stylelint -- --fix",
+    "stylelint": "stylelint './src/**/*.?(s|p)css'",
+    "eslint": "eslint -c .eslintrc.json ./src/components",
+    "flow": "flow",
+    "check": "npm run flow && npm run lint",
+    "prebuild": "npm run clean && npm run cpPkgJson && npm run sass:copy",
+    "build": "NODE_ENV=production npm run babel -- -q && npm run build:flow",
+    "build:flow": "flow-copy-source src/components libs && cpx \"src/components/**/*.flow\" libs",
+    "cpPkgJson": "cpx package.json libs",
+    "predeploy": "npm run check && npm run build",
+    "deploy": "cd libs && npm publish",
+    "clean": "rimraf libs",
+    "babel": "babel ./src/components --ignore '**/__tests__' --out-dir ./libs",
+    "sass:copy": "cpx \"src/components/**/*.scss\" libs",
+    "test": "cross-env NODE_ENV=test npm run flow && jest '.*/__tests__/.*(spec)\\.jsx?$'",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage"
+  }
+}

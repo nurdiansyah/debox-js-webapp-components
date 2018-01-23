@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form/Radio should running no error 1`] = `
+<form
+  class="form"
+>
+  <div
+    class="form__control"
+  >
+    <div
+      class="input-check "
+    >
+      <label
+        class="input-check__label"
+        for="buah2"
+      >
+        <input
+          class="input-check__checkbox"
+          id="buah2"
+          type="checkbox"
+          value="mangga"
+        />
+        Mangga
+      </label>
+      <label
+        class="input-check__label"
+        for="buah3"
+      >
+        <input
+          class="input-check__checkbox"
+          id="buah3"
+          type="checkbox"
+          value="mangga"
+        />
+        Mangga
+      </label>
+      <label
+        class="input-check__label"
+        for="2"
+      >
+        <input
+          class="input-check__checkbox"
+          id="2"
+          type="checkbox"
+          value="jeruk"
+        />
+        Jeruk
+      </label>
+      <label
+        class="input-check__label"
+        for="3"
+      >
+        <input
+          class="input-check__checkbox"
+          id="3"
+          type="checkbox"
+          value="apel"
+        />
+        Apel
+      </label>
+    </div>
+  </div>
+</form>
+`;

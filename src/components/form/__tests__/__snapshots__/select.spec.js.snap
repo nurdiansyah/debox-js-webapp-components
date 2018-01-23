@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form/Select should running no error 1`] = `
+<form
+  class="form"
+>
+  <div
+    class="form__control"
+  >
+    <select
+      class="select"
+      id="buah1"
+    >
+      <option
+        value="mangga"
+      >
+        Mangga
+      </option>
+      <option
+        value="mangga"
+      >
+        Mangga
+      </option>
+      <option
+        id="2"
+        value="jeruk"
+      >
+        Jeruk
+      </option>
+      <option
+        checked=""
+        id="3"
+        value="apel"
+      >
+        Apel
+      </option>
+    </select>
+  </div>
+</form>
+`;

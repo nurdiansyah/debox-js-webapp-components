@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar/> should add header with brand 1`] = `
+<nav
+  class=""
+>
+  <a
+    class="brand"
+  >
+    Brand
+  </a>
+</nav>
+`;
+
+exports[`<Navbar/> should render Navbar 1`] = `
+<nav
+  className=""
+/>
+`;
