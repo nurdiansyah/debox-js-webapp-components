@@ -1,6 +1,6 @@
 {
   "name": "@deboxsoft/webapp-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "component ui web base foundation framework.",
   "license": "UNLICENSED",
   "repository": {
@@ -15,7 +15,7 @@
   "author": "Nurdiansyah",
   "dependencies": {
     "@deboxsoft/core": "1.0.*",
-    "@deboxsoft/webapp-core": "1.0.*",
+    "@deboxsoft/webapp": "1.0.*",
     "form-data-to-object": "^0.2.0",
     "detect-passive-events": "1.0.4",
     "tween-functions": "1.2.0",
@@ -45,7 +45,8 @@
     "build:flow": "flow-copy-source src/components libs && cpx \"src/components/**/*.flow\" libs",
     "cpPkgJson": "cpx package.json libs",
     "predeploy": "npm run check && npm run build",
-    "deploy": "cd libs && npm publish",
+    "deploy": "cd libs && yarn publish --access public",
+    "deploy:artifactory": "npm run cpPkgJson && cd libs && yarn publish -- --registry http://devel.deboxserver:8081/artifactory/api/npm/npm-local",
     "clean": "rimraf libs",
     "babel": "babel ./src/components --ignore '**/__tests__' --out-dir ./libs",
     "sass:copy": "cpx \"src/components/**/*.scss\" libs",

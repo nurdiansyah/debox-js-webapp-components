@@ -1,8 +1,7 @@
 // @flow
 
-import React, {PureComponent} from 'react'
+import React from 'react'
 import {propsClassNames} from '../utils/classnamesUtils'
-import history from '@debox-client/core/history'
 
 export type NavigationProps = {
   children?: React$Node,
@@ -17,7 +16,6 @@ const defaultProps = {
 }
 
 export const Navigation = (props: NavigationProps) => {
-  /\/hotel(\/)/
   const {children, className: _className, classNames: _classNames, isRight, tag: Tag = defaultProps.tag, ...attributes} = props
 
   const classNames = propsClassNames({classNames: _classNames})

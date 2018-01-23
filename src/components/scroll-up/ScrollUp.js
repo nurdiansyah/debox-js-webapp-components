@@ -63,10 +63,10 @@ const defaultProps = {
 
 export default class ScrollUp extends Component<ScrollUpProps, State> {
   data: Object
-  handleScroll: function
-  handleClick: function
-  scrollStep: function
-  stopScrolling: function
+  handleScroll: Function
+  handleClick: Function
+  scrollStep: Function
+  stopScrolling: Function
 
   constructor(props: ScrollUpProps) {
     super(props)
@@ -80,16 +80,15 @@ export default class ScrollUp extends Component<ScrollUpProps, State> {
     this.stopScrolling = this.stopScrolling.bind(this)
   }
 
-  shouldComponentUpdate(nextProps: ScrollUpProps, nextState: State) {
-    return nextState.show !== this.state.show
-  }
-
   componentDidMount() {
     this.handleScroll()
-
     window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('wheel', this.stopScrolling, detectPassiveEvents.hasSupport ? {passive: true} : false)
     window.addEventListener('touchstart', this.stopScrolling, detectPassiveEvents.hasSupport ? {passive: true} : false)
+  }
+
+  shouldComponentUpdate(nextProps: ScrollUpProps, nextState: State) {
+    return nextState.show !== this.state.show
   }
 
   componentWillUnmount() {
@@ -103,10 +102,8 @@ export default class ScrollUp extends Component<ScrollUpProps, State> {
       if (!this.state.show) {
         this.setState({show: true})
       }
-    } else {
-      if (this.state.show) {
-        this.setState({show: false})
-      }
+    } else if (this.state.show) {
+      this.setState({show: false})
     }
   }
 
@@ -125,7 +122,7 @@ export default class ScrollUp extends Component<ScrollUpProps, State> {
 
     this.data.currentTime = timestamp - this.data.startTime
 
-    let position = TweenFunctions[this.props.easing](this.data.currentTime, this.data.startValue, this.props.topPosition, this.props.duration)
+    const position = TweenFunctions[this.props.easing](this.data.currentTime, this.data.startValue, this.props.topPosition, this.props.duration)
 
     if (window.pageYOffset <= this.props.topPosition) {
       this.stopScrolling()
@@ -140,7 +137,7 @@ export default class ScrollUp extends Component<ScrollUpProps, State> {
   }
 
   render() {
-    let propStyle = this.props.style
+    const propStyle = this.props.style
     let style = Object.assign({}, defaultProps.style)
 
     style = Object.assign(style, propStyle)
@@ -148,6 +145,6 @@ export default class ScrollUp extends Component<ScrollUpProps, State> {
     style.visibility = this.state.show ? 'visible' : 'hidden'
     style.transitionProperty = 'opacity, visibility'
 
-    return <div style={style} onClick={this.handleClick} />
+    return <div style={style} onClick={this.handleClick} role="presentation" />
   }
 }

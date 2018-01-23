@@ -1,5 +1,6 @@
 // @flow
 
-import ScrollUp from './ScrollUp'
+import _ScrollUp from './ScrollUp'
 
+const ScrollUp = _ScrollUp
 export default ScrollUp
