@@ -1,6 +1,6 @@
 // @flow
 
-import _ScrollUp from './ScrollUp'
+import _ScrollUp, {type ScrollUpProps} from './ScrollUp'
 
-const ScrollUp = _ScrollUp
+const ScrollUp: React$ComponentType<ScrollUpProps> = _ScrollUp
 export default ScrollUp

@@ -14,7 +14,7 @@ import _CardLink, {type CardLinkProps} from './Link'
 import _CardSubtitle, {type CardSubtitleProps} from './Subtitle'
 import _CardText, {type CardTextProps} from './Text'
 import _CardTitle, {type CardTitleProps} from './Title'
-import {injectClassNames, type StylesProps} from '../utils/classnamesUtils'
+import {injectClassNames, type StylesProps} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export const Card: React$ComponentType<CardProps & StylesProps> = injectClassNames('card')(_Card)
 export const CardBlock: React$ComponentType<CardBlockProps & StylesProps> = injectClassNames('card')(_CardBlock)
@@ -25,9 +25,13 @@ export const CardFooter: React$ComponentType<CardFooterProps & StylesProps> = in
 export const CardGroup: React$ComponentType<CardGroupProps & StylesProps> = injectClassNames('card')(_CardGroup)
 export const CardHeader: React$ComponentType<CardHeaderProps & StylesProps> = injectClassNames('card')(_CardHeader)
 export const CardImg: React$ComponentType<CardImgProps & StylesProps> = injectClassNames('card')(_CardImg)
-export const CardImgOverlay: React$ComponentType<CardImgOverlayProps & StylesProps> = injectClassNames('card')(_CardImgOverlay)
+export const CardImgOverlay: React$ComponentType<CardImgOverlayProps & StylesProps> = injectClassNames('card')(
+  _CardImgOverlay
+)
 export const CardLink: React$ComponentType<CardLinkProps & StylesProps> = injectClassNames('card')(_CardLink)
-export const CardSubtitle: React$ComponentType<CardSubtitleProps & StylesProps> = injectClassNames('card')(_CardSubtitle)
+export const CardSubtitle: React$ComponentType<CardSubtitleProps & StylesProps> = injectClassNames('card')(
+  _CardSubtitle
+)
 export const CardText: React$ComponentType<CardTextProps & StylesProps> = injectClassNames('card')(_CardText)
 export const CardTitle: React$ComponentType<CardTitleProps & StylesProps> = injectClassNames('card')(_CardTitle)
 

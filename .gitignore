@@ -193,6 +193,7 @@ config/local*
 
 assets/dist
 libs
+libs/package.json
 /coverage/
 .stylelintcache
 package-lock.json

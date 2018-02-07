@@ -42,7 +42,14 @@ class NavLink extends React.Component<MenuLinkProps> {
   }
 
   render(): React$Node {
-    const {className: _className, classNames = defaultProps.classNames, active, tag: Tag = defaultProps.tag, getRef, ...attributes} = this.props
+    const {
+      className: _className,
+      classNames = defaultProps.classNames,
+      active,
+      tag: Tag = defaultProps.tag,
+      getRef,
+      ...attributes
+    } = this.props
 
     const className = classNames(_className || 'nav-link', {
       disabled: attributes.disabled,

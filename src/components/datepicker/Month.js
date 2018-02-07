@@ -2,9 +2,9 @@
 
 import React from 'react'
 import type {Moment} from 'moment'
-import * as utils from '../utils/dateUtils'
-import type {HighlighDateType} from '../utils/dateUtils'
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
+import * as utils from '@deboxsoft/webapp/utils/dateUtils'
+import type {HighlighDateType} from '@deboxsoft/webapp/utils/dateUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 import Week from './Week'
 import {BLOCK_CALENDAR_ID} from './constants'

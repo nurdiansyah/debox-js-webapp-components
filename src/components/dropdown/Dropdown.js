@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import Popper from '../popper/Popper'
 import DropdownMenu from './Menu'
 import type {SizeType} from '../variables'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type DropdownProps = {
   children?: ChildrenArray<*>,
@@ -154,7 +154,16 @@ class Dropdown extends PureComponent<DropdownProps> {
   }
 
   render(): React$Node {
-    const {className: _className, classNames: _classNames, dropup, group, size, tag: Tag = defaultProps.tag, isOpen, ...attributes} = this.props
+    const {
+      className: _className,
+      classNames: _classNames,
+      dropup,
+      group,
+      size,
+      tag: Tag = defaultProps.tag,
+      isOpen,
+      ...attributes
+    } = this.props
     delete attributes.toggle
     const classNames = propsClassNames({classNames: _classNames})
     const className = `${_className ? `${_className} ` : ''}${classNames(null, {

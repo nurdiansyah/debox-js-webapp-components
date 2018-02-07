@@ -13,8 +13,8 @@ import {
   formatDate,
   isTimeInDisabledRange,
   isTimeDisabled
-} from '../utils/dateUtils'
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
+} from '@deboxsoft/webapp/utils/dateUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
 import {BLOCK_TIME_ID} from './constants'
 
 export type TimeProps = {

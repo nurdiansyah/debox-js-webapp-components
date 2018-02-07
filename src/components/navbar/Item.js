@@ -1,9 +1,9 @@
 // @flow
 
 import React, {PureComponent} from 'react'
-import history from '@debox-client/core/history'
+import history from '@deboxsoft/core/history'
 import {Link} from '../button'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type NavbarItemProps = {
   children?: React$Node,
@@ -59,7 +59,10 @@ export class Item extends PureComponent<NavbarItemProps, State> {
     const {children, className: _className, classNames: _classNames, tag, ...attributes} = this.props
 
     const classNames = propsClassNames({classNames: _classNames})
-    const className = `${_className ? `${_className} ` : ''}${classNames('item', {link: !!attributes.to, 'is-active': this.state.active})}`
+    const className = `${_className ? `${_className} ` : ''}${classNames('item', {
+      link: !!attributes.to,
+      'is-active': this.state.active
+    })}`
     const Tag = tag || (attributes.to && Link) || defaultProps.tag
     return (
       <Tag className={className} {...attributes}>

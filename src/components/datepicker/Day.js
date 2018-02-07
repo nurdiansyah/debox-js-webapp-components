@@ -2,9 +2,18 @@
 
 import React from 'react'
 import type {Moment} from 'moment'
-import {getDay, getMonth, getDate, now, isSameDay, isDayDisabled, isDayInRange, getDayOfWeekCode} from '../utils/dateUtils'
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
-import type {HighlighDateType} from '../utils/dateUtils'
+import {
+  getDay,
+  getMonth,
+  getDate,
+  now,
+  isSameDay,
+  isDayDisabled,
+  isDayInRange,
+  getDayOfWeekCode
+} from '@deboxsoft/webapp/utils/dateUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
+import type {HighlighDateType} from '@deboxsoft/webapp/utils/dateUtils'
 import {BLOCK_DAY_ID} from './constants'
 
 type DayProps = {

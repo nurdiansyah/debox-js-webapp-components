@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type CardBlockProps = {
   tag?: React$ElementType,

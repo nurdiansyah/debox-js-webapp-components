@@ -5,11 +5,11 @@ exports[`form/Select should running no error 1`] = `
   class="form"
 >
   <div
-    class="form__control"
+    class="control"
   >
     <select
-      class="select"
-      id="buah1"
+      class="control__element SELECT"
+      id="buah2"
     >
       <option
         value="mangga"
@@ -28,7 +28,6 @@ exports[`form/Select should running no error 1`] = `
         Jeruk
       </option>
       <option
-        checked=""
         id="3"
         value="apel"
       >

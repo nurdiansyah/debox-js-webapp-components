@@ -2,7 +2,7 @@
 import React from 'react'
 
 import {SIZE_MAP} from '../variables'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type ButtonGroupProps = {
   className?: string,
@@ -19,7 +19,15 @@ const defaultProps = {
 }
 
 const ButtonGroup = (props: ButtonGroupProps) => {
-  const {className: _className, classNames: _classNames, size, tag: Tag = defaultProps.tag, vertical, role = defaultProps.role, ...attributes} = props
+  const {
+    className: _className,
+    classNames: _classNames,
+    size,
+    tag: Tag = defaultProps.tag,
+    vertical,
+    role = defaultProps.role,
+    ...attributes
+  } = props
   const classNames = propsClassNames({classNames: _classNames})
   const className = `${_className ? `${_className} ` : ''}${classNames(null, {
     size: size ? SIZE_MAP[size] : false,

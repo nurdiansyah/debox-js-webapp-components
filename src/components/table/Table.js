@@ -1,7 +1,7 @@
 // @flow
 
 import React, {Component} from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type TableProps = {
   className?: string,
@@ -15,7 +15,16 @@ export type TableProps = {
 
 class Table extends Component<TableProps> {
   renderTable() {
-    const {striped, bordered, condensed, hover, responsive, className: _className, classNames: _classNames, ...attributes} = this.props
+    const {
+      striped,
+      bordered,
+      condensed,
+      hover,
+      responsive,
+      className: _className,
+      classNames: _classNames,
+      ...attributes
+    } = this.props
     const classNames = propsClassNames({classNames: _classNames})
     const className = `${_className ? `${_className} ` : ''}${classNames(null, {
       responsive,

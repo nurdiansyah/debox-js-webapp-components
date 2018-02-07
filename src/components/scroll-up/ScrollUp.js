@@ -4,9 +4,11 @@ import React, {Component} from 'react'
 import TweenFunctions from 'tween-functions'
 import detectPassiveEvents from 'detect-passive-events'
 
-type ScrollUpProps = {
+export type ScrollUpProps = {
+  children: React$Node,
   topPosition?: number,
   showUnder: number,
+  className?: string,
   easing:
     | 'linear'
     | 'easeInQuad'
@@ -112,19 +114,20 @@ export default class ScrollUp extends Component<ScrollUpProps, State> {
     this.data.startValue = window.pageYOffset
     this.data.currentTime = 0
     this.data.startTime = null
-    this.data.fafId = window.requestAnimationFrame(this.scrollStep)
+    this.data.rafId = window.requestAnimationFrame(this.scrollStep)
   }
 
   scrollStep(timestamp: number) {
+    const {easing = defaultProps.easing, topPosition = 0, duration = defaultProps.duration} = this.props
     if (!this.data.startTime) {
       this.data.startTime = timestamp
     }
 
     this.data.currentTime = timestamp - this.data.startTime
 
-    const position = TweenFunctions[this.props.easing](this.data.currentTime, this.data.startValue, this.props.topPosition, this.props.duration)
+    const position = TweenFunctions[easing](this.data.currentTime, this.data.startValue, topPosition, duration)
 
-    if (window.pageYOffset <= this.props.topPosition) {
+    if (window.pageYOffset <= topPosition) {
       this.stopScrolling()
     } else {
       window.scrollTo(window.pageYOffset, position)
@@ -145,6 +148,10 @@ export default class ScrollUp extends Component<ScrollUpProps, State> {
     style.visibility = this.state.show ? 'visible' : 'hidden'
     style.transitionProperty = 'opacity, visibility'
 
-    return <div style={style} onClick={this.handleClick} role="presentation" />
+    return (
+      <div className={this.props.className} style={style} onClick={this.handleClick} role="presentation">
+        {this.props.children}
+      </div>
+    )
   }
 }

@@ -4,8 +4,12 @@ import React, {PureComponent} from 'react'
 import ReactDOM from 'react-dom'
 import {TransitionGroup} from 'react-transition-group'
 import Fade from '../animation/Fade'
-import {getOriginalPadding, conditionallyUpdateScrollbar, setScrollbarWidth} from '@debox-client/webapp-core/utils/dom/body-utils'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {
+  getOriginalPadding,
+  conditionallyUpdateScrollbar,
+  setScrollbarWidth
+} from '@deboxsoft/webapp/utils/dom/body-utils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 const MODAL_OPEN_CLASS_NAME_BODY = 'body-open'
 
@@ -256,13 +260,19 @@ class Modal extends PureComponent<ModalProps> {
               onEnter={this.onOpened}
               onLeave={this.onClosed}
               transitionAppearTimeout={
-                typeof this.props.modalTransitionAppearTimeout === 'number' ? this.props.modalTransitionAppearTimeout : modalTransitionTimeout
+                typeof this.props.modalTransitionAppearTimeout === 'number'
+                  ? this.props.modalTransitionAppearTimeout
+                  : modalTransitionTimeout
               }
               transitionEnterTimeout={
-                typeof this.props.modalTransitionEnterTimeout === 'number' ? this.props.modalTransitionEnterTimeout : modalTransitionTimeout
+                typeof this.props.modalTransitionEnterTimeout === 'number'
+                  ? this.props.modalTransitionEnterTimeout
+                  : modalTransitionTimeout
               }
               transitionLeaveTimeout={
-                typeof this.props.modalTransitionLeaveTimeout === 'number' ? this.props.modalTransitionLeaveTimeout : modalTransitionTimeout
+                typeof this.props.modalTransitionLeaveTimeout === 'number'
+                  ? this.props.modalTransitionLeaveTimeout
+                  : modalTransitionTimeout
               }
               classNames={classNames}
               className={classNames('fade')}

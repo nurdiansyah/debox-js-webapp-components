@@ -5,11 +5,11 @@ exports[`form/Input should running no error 1`] = `
   class="form"
 >
   <div
-    class="form__control"
+    class="control"
   >
     <input
-      class="input"
-      id="buah1"
+      class="control__element INPUT"
+      id="buah2"
       name="buah"
       value=""
     />

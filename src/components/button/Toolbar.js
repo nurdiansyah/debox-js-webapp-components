@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type ButtonToolbarProps = {
   className?: string,
@@ -16,7 +16,13 @@ const defaultProps = {
 }
 
 const ButtonToolbar = (props: ButtonToolbarProps) => {
-  const {className: _className, classNames: _classNames, tag: Tag = defaultProps.tag, role = defaultProps.role, ...attributes} = props
+  const {
+    className: _className,
+    classNames: _classNames,
+    tag: Tag = defaultProps.tag,
+    role = defaultProps.role,
+    ...attributes
+  } = props
   const classNames = propsClassNames({classNames: _classNames})
   const className = `${_className ? `${_className} ` : ''}${classNames()}`
   return <Tag {...attributes} className={className} role={role} />

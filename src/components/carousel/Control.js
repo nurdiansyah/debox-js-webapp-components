@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type CarouselControlProps = {
   tag: React$ElementType,
@@ -16,7 +16,14 @@ const defaultProps = {
 }
 
 const CarouselControl = (props: CarouselControlProps) => {
-  const {tag: Tag = defaultProps.tag, direction, classNames: _classNames, onClickHandler, directionText, ...attributes} = props
+  const {
+    tag: Tag = defaultProps.tag,
+    direction,
+    classNames: _classNames,
+    onClickHandler,
+    directionText,
+    ...attributes
+  } = props
 
   const classNames = propsClassNames({classNames: _classNames})
   const anchorClasses = classNames('control', {direction})

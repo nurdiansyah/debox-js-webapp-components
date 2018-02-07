@@ -1,9 +1,24 @@
 // @flow
 
 import React from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
-type sizeType = '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | 'three-quarters' | 'two-thirds' | 'half' | 'one-third' | 'one-quarter'
+type sizeType =
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | 'three-quarters'
+  | 'two-thirds'
+  | 'half'
+  | 'one-third'
+  | 'one-quarter'
 
 export type ColumnProps = {
   tag?: React$ElementType,

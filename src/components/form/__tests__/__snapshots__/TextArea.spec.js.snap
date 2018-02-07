@@ -2,14 +2,14 @@
 
 exports[`form/TextArea should running no error 1`] = `
 <form
-  class="form"
+  class=""
 >
   <div
-    class="form__control"
+    class="control"
   >
     <textarea
-      class="text-area"
-      id="buah1"
+      class="control__element text-area"
+      id="buah2"
     />
   </div>
 </form>

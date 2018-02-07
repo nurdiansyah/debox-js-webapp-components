@@ -3,11 +3,11 @@
 import React, {Component} from 'react'
 import isEqual from 'lodash/isEqual'
 
-import FormControl from './Control'
+import FormControl from '@deboxsoft/webapp/form/Control'
 import cleanProps from './helper/clean-props'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
-import type {ControlProps} from './helper/form-control-types'
+import type {ControlProps} from '@deboxsoft/webapp/form/Control-Base'
 
 export type InputProps = {
   label?: string,
@@ -39,19 +39,19 @@ export class Input extends Component<InputProps> {
     this.changeValue = this.changeValue.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let value
     if (this.props.type && this.props.type.match(/file/)) {
       value = []
     } else {
       value = this.props.value || ''
     }
+    this.props.formControl && this.props.formControl.setValue(value)
+  }
 
-    if (this.props.formControl) {
-      const formControl = this.props.formControl
-      formControl.setValue(value)
-      // set enable autoFocus
-      formControl.setEnableAutoFocus(true)
+  componentWillReceiveProps(nextProps: InputProps) {
+    if (!isEqual(nextProps.value, this.props.value)) {
+      this.props.formControl && this.props.formControl.setValue(nextProps.value)
     }
   }
 
@@ -68,9 +68,7 @@ export class Input extends Component<InputProps> {
     } else {
       value = event.currentTarget.value
     }
-    if (this.props.formControl) {
-      this.props.formControl.setValue(value, this.props.onChange, _addValue)
-    }
+    this.props.formControl && this.props.formControl.setValue(value, this.props.onChange, _addValue)
   }
 
   setFocus: Function = () => {

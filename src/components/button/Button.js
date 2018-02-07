@@ -4,7 +4,7 @@ import React, {PureComponent} from 'react'
 
 import Link from './Link'
 import {SIZE_MAP, type SizeType} from '../variables'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type ButtonProps = {
   active?: boolean,

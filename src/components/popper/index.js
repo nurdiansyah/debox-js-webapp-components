@@ -3,7 +3,7 @@
 import _Popper, {type PopperProps} from './Popper'
 import _Arrow, {type ArrowProps} from './Arrow'
 import _Tooltip, {type TooltipProps} from './Tooltip'
-import {injectClassNames, type StylesProps} from '../utils/classnamesUtils'
+import {injectClassNames, type StylesProps} from '@deboxsoft/webapp/utils/classnamesUtils'
 import type {Placement as _Placement, Modifieras as _Modifiers} from 'popper.js'
 
 export type Placement = _Placement

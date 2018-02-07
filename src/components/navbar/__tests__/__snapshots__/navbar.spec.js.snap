@@ -2,18 +2,31 @@
 
 exports[`<Navbar/> should add header with brand 1`] = `
 <nav
-  class=""
+  class="navbar   "
 >
-  <a
-    class="brand"
+  <div
+    class="navbar__container"
   >
-    Brand
-  </a>
+    <div
+      class="navbar__brand"
+    >
+      <a
+        class="navbar__link "
+        role="button"
+      >
+        Brand
+      </a>
+    </div>
+  </div>
 </nav>
 `;
 
 exports[`<Navbar/> should render Navbar 1`] = `
 <nav
-  className=""
-/>
+  className="navbar   "
+>
+  <div
+    className="navbar__container"
+  />
+</nav>
 `;

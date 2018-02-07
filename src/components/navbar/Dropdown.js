@@ -3,7 +3,7 @@
 import React, {type ChildrenArray} from 'react'
 
 import Dropdown from './Dropdown'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type NavbarDropdownProps = {
   children?: ChildrenArray<*>,

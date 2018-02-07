@@ -1,21 +1,22 @@
 import React from 'react'
+import {bemStylesFactory} from '@deboxsoft/webapp/utils/classnamesUtils'
 
-import {Form, Select, getFormBlock, getSelectBlock} from '../index'
+import {Form, Select} from '../index'
+
+const styles = bemStylesFactory({select: 'SELECT'})
 
 const values = [
   {label: 'Mangga', value: 'mangga'},
   {label: 'Mangga', value: 'mangga'},
   {id: '2', label: 'Jeruk', value: 'jeruk'},
-  {id: '3', label: 'Apel', value: 'apel', checked: true}
+  {id: '3', label: 'Apel', value: 'apel', selected: true}
 ]
 
 describe('form/Select', () => {
   it('should running no error', () => {
-    const formBlock = getFormBlock({})
-    const selectBlock = getSelectBlock({})
     const wrapper = render(
-      <Form block={formBlock}>
-        <Select block={selectBlock} name="buah" values={values} />
+      <Form styles={styles}>
+        <Select styles={styles} name="buah" values={values} />
       </Form>
     )
     expect(wrapper).toMatchSnapshot()

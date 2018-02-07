@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type PaginationLinkProps = {
   'aria-label'?: string,
@@ -18,7 +18,14 @@ const defaultProps = {
 }
 
 const PaginationLink = (props: PaginationLinkProps) => {
-  const {className: _className, classNames: _classNames, next, previous, tag: Tag = defaultProps.tag, ...attributes} = props
+  const {
+    className: _className,
+    classNames: _classNames,
+    next,
+    previous,
+    tag: Tag = defaultProps.tag,
+    ...attributes
+  } = props
 
   const classNames = propsClassNames({classNames: _classNames})
   const className = `${_className ? `${_className} ` : ''}${classNames('link')}`

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import toNumber from 'lodash/toNumber'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type ProgressProps = {
   children?: React$Node,
@@ -50,7 +50,14 @@ const Progress = (props: ProgressProps) => {
   const ProgressBar = multi ? (
     children
   ) : (
-    <div className={progressBarClasses} style={{width: `${percent}%`}} role="progressbar" aria-valuenow={value} aria-valuemin="0" aria-valuemax={max}>
+    <div
+      className={progressBarClasses}
+      style={{width: `${percent}%`}}
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin="0"
+      aria-valuemax={max}
+    >
       {children}
     </div>
   )

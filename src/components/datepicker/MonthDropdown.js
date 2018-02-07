@@ -3,8 +3,8 @@
 import React from 'react'
 import getKey from 'lodash/uniqueId'
 import onClickOutside from 'react-onclickoutside'
-import * as utils from '../utils/dateUtils'
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
+import * as utils from '@deboxsoft/webapp/utils/dateUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
 import MonthDropdownOptions from './MonthDropdownOptions'
 import {BLOCK_CALENDAR_ID} from './constants'
 
@@ -64,7 +64,11 @@ export default class MonthDropdown extends React.PureComponent<MonthDropdownProp
 
   renderSelectMode(monthNames: Array<string>) {
     return (
-      <select value={this.props.month} className={this.blockClass('select')} onChange={e => this.onChange(e.target.value)}>
+      <select
+        value={this.props.month}
+        className={this.blockClass('select')}
+        onChange={e => this.onChange(e.target.value)}
+      >
         {MonthDropdown.renderSelectOptions(monthNames)}
       </select>
     )
@@ -111,7 +115,9 @@ export default class MonthDropdown extends React.PureComponent<MonthDropdownProp
 
   render() {
     const localeData = this.props.locale && utils.getLocaleDataForLocale(this.props.locale)
-    const monthNames = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(M => utils.getMonthInLocale(localeData, utils.newDate({M}), this.props.dateFormat))
+    const monthNames = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(M =>
+      utils.getMonthInLocale(localeData, utils.newDate({M}), this.props.dateFormat)
+    )
 
     let renderedDropdown
     switch (this.props.dropdownMode) {

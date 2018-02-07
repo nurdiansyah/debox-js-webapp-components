@@ -2,7 +2,7 @@
 
 import React, {PureComponent} from 'react'
 
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type FieldProps = {
   className?: string,
@@ -49,7 +49,13 @@ class FormGroup extends PureComponent<FieldProps> {
   }
 
   render(): React$Node {
-    const {classNames: _classNames, label, tag: Tag = defaultProps.tag, className: _className, ...attributes} = this.props
+    const {
+      classNames: _classNames,
+      label,
+      tag: Tag = defaultProps.tag,
+      className: _className,
+      ...attributes
+    } = this.props
     const classNames = propsClassNames({classNames: _classNames})
     let className = _className ? `${_className} ` : ''
     className += classNames('field', {

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Transition from 'react-transition-group/CSSTransition'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type FadeProps = {
   className?: string,
@@ -66,7 +66,13 @@ const Fade = (props: FadeProps) => {
   const classNames = propsClassNames({classNames: _classNames})
   const className = `${_className ? `${_className} ` : ''}${classNames()}`
   return (
-    <Transition {...attributes} className={className} enteredClassName={classNames('in')} enteringClassName={classNames('in')} timeout={timeout} />
+    <Transition
+      {...attributes}
+      className={className}
+      enteredClassName={classNames('in')}
+      enteringClassName={classNames('in')}
+      timeout={timeout}
+    />
   )
 }
 

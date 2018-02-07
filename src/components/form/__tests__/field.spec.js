@@ -1,13 +1,15 @@
 import React from 'react'
 
-import {Form, Field, getFormBlock} from '../index'
+import {Form, Field} from '../index'
+import {bemStylesFactory} from '@deboxsoft/webapp/utils/classnamesUtils'
+
+const styles = bemStylesFactory({field: 'FIELD'})
 
 describe('form/field', () => {
   it('should when not label', () => {
-    const formBlock = getFormBlock({})
     const wrapper = render(
-      <Form block={formBlock}>
-        <Field block={formBlock}>
+      <Form styles={styles}>
+        <Field styles={styles}>
           <div>test</div>
         </Field>
       </Form>
@@ -15,10 +17,9 @@ describe('form/field', () => {
     expect(wrapper).toMatchSnapshot()
   })
   it('should with label', () => {
-    const formBlock = getFormBlock({})
     const wrapper = render(
-      <Form block={formBlock}>
-        <Field block={formBlock} label="label test">
+      <Form styles={styles}>
+        <Field styles={styles} label="label test">
           <div>test</div>
         </Field>
       </Form>

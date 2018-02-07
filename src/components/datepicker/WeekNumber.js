@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
 import {BLOCK_CALENDAR_ID} from './constants'
 
 type WeekNumberProps = {

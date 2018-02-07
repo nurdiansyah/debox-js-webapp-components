@@ -5,23 +5,11 @@ exports[`form/Radio should running no error 1`] = `
   class="form"
 >
   <div
-    class="form__control"
+    class="control"
   >
     <div
-      class="input-check "
+      class="control__element input-check "
     >
-      <label
-        class="input-check__label"
-        for="buah2"
-      >
-        <input
-          class="input-check__checkbox"
-          id="buah2"
-          type="checkbox"
-          value="mangga"
-        />
-        Mangga
-      </label>
       <label
         class="input-check__label"
         for="buah3"
@@ -29,6 +17,18 @@ exports[`form/Radio should running no error 1`] = `
         <input
           class="input-check__checkbox"
           id="buah3"
+          type="checkbox"
+          value="mangga"
+        />
+        Mangga
+      </label>
+      <label
+        class="input-check__label"
+        for="buah4"
+      >
+        <input
+          class="input-check__checkbox"
+          id="buah4"
           type="checkbox"
           value="mangga"
         />

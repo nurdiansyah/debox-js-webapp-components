@@ -1,19 +1,18 @@
 // @flow
 
 import React, {PureComponent} from 'react'
-import uniqueId from 'lodash/uniqueId'
-import FormControl from './Control'
+import isEqual from 'lodash/isEqual'
+import type {ControlProps} from '@deboxsoft/webapp/form/Control-Base'
+import FormControl from '@deboxsoft/webapp/form/Control'
 
 import cleanProps from './helper/clean-props'
-import {propsClassNames} from '../utils/classnamesUtils'
-
-import type {ControlProps} from './helper/form-control-types'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type ValueType = {
   id?: string | number,
   label: string,
   value: string,
-  checked?: ?boolean,
+  selected?: ?boolean,
   group?: string,
   disabled?: boolean
 }
@@ -29,17 +28,54 @@ const defaultProps = {
 }
 
 class Select extends PureComponent<SelectProps> {
+  _id: string
+
   constructor(props, context) {
     super(props, context)
     this.changeValue = this.changeValue.bind(this)
   }
 
   componentWillMount() {
+    const {multiple, values = defaultProps.values, value} = this.props
+    this.setFormControlValue(multiple, values, value)
+  }
+
+  componentWillReceiveProps(nextProps: SelectProps) {
+    this.setFormControlValue(nextProps.multiple, nextProps.values, nextProps.value)
+  }
+
+  shouldComponentUpdate(nextProps: SelectProps) {
+    return !isEqual(this.props, nextProps)
+  }
+
+  setFormControlValue(multiple?: ?boolean, values?: Array<ValueType>, value?: any) {
     const formControl = this.props.formControl
-    if (this.props.multiple) {
-      formControl && formControl.setValue([])
+    if (formControl) {
+      this._id = formControl.id
+    }
+    if (multiple) {
+      const tmp: Array<*> = []
+      values &&
+        values.forEach((option: ValueType) => {
+          option.selected = value
+            ? Array.isArray(value) ? value.includes(option.value) : isEqual(value, option.value)
+            : option.selected
+          if (option.selected) {
+            tmp.push(option.value)
+          }
+        })
+      formControl && formControl.setValue(tmp)
     } else {
-      formControl && formControl.setValue(this.props.value)
+      let tmp: string
+      values &&
+        values.some((option: ValueType) => {
+          if (option.selected) {
+            tmp = option.value
+            return true
+          }
+          return false
+        })
+      formControl && formControl.setValue(tmp)
     }
   }
 
@@ -72,12 +108,13 @@ class Select extends PureComponent<SelectProps> {
       disabled,
       values = defaultProps.values,
       className: _className,
-      ...props
+      ...attributes
     } = this.props
-    const renderValueOption = (item, key) => {
-      const {group, label, ...others} = item // eslint-disable-line no-unused-vars
+    const renderValueOption = (item: ValueType, key: string) => {
+      const {group, label, value: _value, selected, ...others} = item // eslint-disable-line no-unused-vars
+      const _selected = selected || (value && Array.isArray(value) ? value.includes(_value) : value === _value)
       return (
-        <option key={key} {...others}>
+        <option key={key} selected={_selected} value={_value} {...others}>
           {label}
         </option>
       )
@@ -89,19 +126,23 @@ class Select extends PureComponent<SelectProps> {
 
     let optionNodes = []
     if (groups.length <= 0) {
-      optionNodes = values.map((item: ValueType) => renderValueOption(item, uniqueId(name)))
+      optionNodes = values.map((item: ValueType, index: number) =>
+        renderValueOption(item, `${this._id}-option-${index}`)
+      )
     } else {
       const itemsWithoutGroup = values.filter(item => !item.group)
-      const optionId = uniqueId(name)
+      const optionId = `${this._id}-option`
       itemsWithoutGroup.forEach((item: ValueType, key: number) => {
         optionNodes.push(renderValueOption(item, `${optionId}-${key}`))
       })
 
-      groups.forEach(group => {
+      groups.forEach((group, groupIndex) => {
         const groupItems = values.filter(item => item.group === group)
-        const groupOptionNodes = groupItems.map((item: ValueType) => renderValueOption(item))
+        const groupOptionNodes = groupItems.map((item: ValueType, index: number) =>
+          renderValueOption(item, `${this._id}-option-${index}`)
+        )
         optionNodes.push(
-          <optgroup label={group} key={optionId}>
+          <optgroup label={group} key={`${optionId}-group-${groupIndex}`}>
             {groupOptionNodes}
           </optgroup>
         )
@@ -120,7 +161,7 @@ class Select extends PureComponent<SelectProps> {
         value={_value}
         onChange={this.changeValue}
         disabled={disabled || (formControl && formControl.isFormDisabled())}
-        {...cleanProps(props)}
+        {...cleanProps(attributes)}
       >
         {optionNodes}
       </select>

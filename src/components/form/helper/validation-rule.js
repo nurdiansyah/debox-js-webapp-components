@@ -47,7 +47,8 @@ const validations = {
 
   isSpecialWords: (value: *) => validations.matchRegexp(value, /^[A-Z\s\u00C0-\u017F]+$/i),
 
-  isLength: (value: *, values: Array<*>, length: number) => !isExisty(value) || isEmpty(value) || value.length === length,
+  isLength: (value: *, values: Array<*>, length: number) =>
+    !isExisty(value) || isEmpty(value) || value.length === length,
 
   equals: (value: *, values: Array<*>, eql: *) => !isExisty(value) || isEmpty(value) || value === eql,
 
@@ -55,7 +56,8 @@ const validations = {
 
   maxLength: (value: *, values: Array<*>, length: number) => !isExisty(value) || value.length <= length,
 
-  minLength: (value: *, values: Array<*>, length: number): boolean => !isExisty(value) || isEmpty(value) || value.length >= length
+  minLength: (value: *, values: Array<*>, length: number): boolean =>
+    !isExisty(value) || isEmpty(value) || value.length >= length
 }
 
 export default validations

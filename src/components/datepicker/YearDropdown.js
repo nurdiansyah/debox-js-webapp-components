@@ -2,13 +2,13 @@
 
 import React from 'react'
 import type {Moment} from 'moment'
-import {getYear} from '../utils/dateUtils'
+import {getYear} from '@deboxsoft/webapp/utils/dateUtils'
 import onClickOutside from 'react-onclickoutside'
 
 import getKey from 'lodash/uniqueId'
 import YearDropdownOptions from './YearDropdownOptions'
 import {BLOCK_CALENDAR_ID} from './constants'
-import {classNamesFactory} from '../utils/classnamesUtils'
+import {classNamesFactory} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 const WrappedYearDropdownOptions = onClickOutside(YearDropdownOptions)
 type YearDropdownProps = {

@@ -4,13 +4,13 @@ import React, {Component} from 'react'
 import isEqual from 'lodash/isEqual'
 import find from 'lodash/find'
 import formDataToObject from 'form-data-to-object'
+import FormControl from '@deboxsoft/webapp/form/Control'
+import {contextTypes} from '@deboxsoft/webapp/form/Control-Base'
+import type {FormControlType, State as FormControl$State, Context} from '@deboxsoft/webapp/form/Control-Base'
 
-import noop from '@debox-client/core/utils/noop'
+import noop from '@deboxsoft/core/utils/noop'
 import validationRules from './helper/validation-rule'
-import {contextTypes} from './helper/form-control-types'
-import type {FormControlType, State as FormControl$State, Context} from './helper/form-control-types'
-import FormControl from './Control'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type FormProps = {
   layout?: string,
@@ -178,7 +178,11 @@ class Form extends Component<FormProps, State> {
   }
 
   componentDidUpdate(): void {
-    if (this.props.validationErrors && typeof this.props.validationErrors === 'object' && Object.keys(this.props.validationErrors).length > 0) {
+    if (
+      this.props.validationErrors &&
+      typeof this.props.validationErrors === 'object' &&
+      Object.keys(this.props.validationErrors).length > 0
+    ) {
       this.setInputValidationErrors(this.props.validationErrors)
     }
 
@@ -302,10 +306,17 @@ class Form extends Component<FormProps, State> {
   // and set the serverError message
   updateInputsWithError(errors: *): void {
     Object.keys(errors).forEach(name => {
-      const component: FormControlType = find(this.inputs, (_component: FormControlType) => _component.props.name === name)
+      const component: FormControlType = find(
+        this.inputs,
+        (_component: FormControlType) => _component.props.name === name
+      )
 
       if (!component) {
-        throw new Error(`You are trying to update an input that does not exist. Verify errors object with input names. ${JSON.stringify(errors)}`)
+        throw new Error(
+          `You are trying to update an input that does not exist. Verify errors object with input names. ${JSON.stringify(
+            errors
+          )}`
+        )
       }
       const state: FormControl$State = {
         isValid: this.props.preventExternalInvalidation || false,
@@ -362,7 +373,9 @@ class Form extends Component<FormProps, State> {
     }
 
     const isRequired = Object.keys(component.requiredValidations).length ? !!requiredResults.success.length : false
-    const isValid = !validationResults.failed.length && !(this.props.validationErrors && this.props.validationErrors[component.props.name])
+    const isValid =
+      !validationResults.failed.length &&
+      !(this.props.validationErrors && this.props.validationErrors[component.props.name])
     const _error = () => {
       if (isValid && !isRequired) {
         return []

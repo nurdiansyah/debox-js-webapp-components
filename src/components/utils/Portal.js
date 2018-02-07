@@ -2,7 +2,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {ownerDocument} from '@debox-client/webapp-core/utils/dom/owner'
+import {ownerDocument} from '@deboxsoft/webapp/utils/dom/owner'
 import canUseDom from 'dom-helpers/util/inDOM'
 import getContainer from './getContainer'
 
@@ -53,7 +53,9 @@ class Portal extends React.Component<PortalProps> {
   getMountNode = () => this._portalContainerNode
 
   render(): React$Node {
-    return this.props.children && this._portalContainerNode ? ReactDOM.createPortal(this.props.children, this._portalContainerNode) : null
+    return this.props.children && this._portalContainerNode
+      ? ReactDOM.createPortal(this.props.children, this._portalContainerNode)
+      : null
   }
 }
 

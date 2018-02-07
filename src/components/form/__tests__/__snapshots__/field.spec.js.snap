@@ -5,7 +5,7 @@ exports[`form/field should when not label 1`] = `
   class="form"
 >
   <div
-    class="form__field  "
+    class="field__field  "
   >
     <div>
       test
@@ -19,10 +19,10 @@ exports[`form/field should with label 1`] = `
   class="form"
 >
   <div
-    class="form__field  "
+    class="field__field  "
   >
     <label
-      class="form__label"
+      class="field__label"
     >
       label test
     </label>

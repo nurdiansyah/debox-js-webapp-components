@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`[object Object] 1`] = `[Function]`;
-
 exports[`button -> tooltip Ketika dijalankan secara default: [object Object] 1`] = `[Function]`;

@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type ContainerProps = {
   className?: string,
@@ -16,7 +16,14 @@ const defaultProps = {
 }
 
 const Container = (props: ContainerProps) => {
-  const {className: _className, extClassName, classNames: _classNames, isFluid, tag: Tag = defaultProps.tag, ...attributes} = props
+  const {
+    className: _className,
+    extClassName,
+    classNames: _classNames,
+    isFluid,
+    tag: Tag = defaultProps.tag,
+    ...attributes
+  } = props
 
   const classNames = propsClassNames({classNames: _classNames})
   const className = `${_className ? `${_className} ` : ''}${classNames(

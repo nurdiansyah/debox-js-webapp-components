@@ -2,11 +2,11 @@
 
 import React, {PureComponent} from 'react'
 
-import FormControl from './Control'
+import FormControl from '@deboxsoft/webapp/form/Control'
 import cleanProps from './helper/clean-props'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
-import type {ControlProps} from './helper/form-control-types'
+import type {ControlProps} from '@deboxsoft/webapp/form/Control-Base'
 
 export type TextAreaProps = {
   cols?: number,
@@ -28,7 +28,18 @@ export class TextArea extends PureComponent<TextAreaProps> {
   }
 
   render(): React$Node {
-    const {id, value, formControl, name, classNames: _classNames, disabled, className: _className, cols, rows, ...attributes} = this.props
+    const {
+      id,
+      value,
+      formControl,
+      name,
+      classNames: _classNames,
+      disabled,
+      className: _className,
+      cols,
+      rows,
+      ...attributes
+    } = this.props
 
     const _id = formControl ? formControl.id : id
     const _value = formControl ? formControl.getValue() : value

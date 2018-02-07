@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import type {Node} from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type MediaProps = {
   body?: boolean,
@@ -20,7 +20,21 @@ export type MediaProps = {
 }
 
 const Media = (props: MediaProps) => {
-  const {body, bottom, className: _className, classNames: _classNames, heading, left, list, middle, object, right, tag, top, ...attributes} = props
+  const {
+    body,
+    bottom,
+    className: _className,
+    classNames: _classNames,
+    heading,
+    left,
+    list,
+    middle,
+    object,
+    right,
+    tag,
+    top,
+    ...attributes
+  } = props
 
   let defaultTag
   if (heading) {

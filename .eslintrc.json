@@ -67,6 +67,7 @@
     "react/jsx-space-before-closing": 0,
     "react/jsx-tag-spacing": 0,
     "react/no-unused-prop-types": [1, {"skipShapeProps": true}],
+    "react/no-array-index-key": 0,
     "react/prop-types": 0,
     "react/require-default-props": 0,
     "react/require-extension": 0,

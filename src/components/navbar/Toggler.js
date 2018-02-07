@@ -1,7 +1,8 @@
 // @flow
 
 import React from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
+import classNames from 'classNames'
 
 export type NavbarTogglerProps = {
   tag?: React$ElementType,
@@ -28,8 +29,8 @@ const NavbarToggler = (props: NavbarTogglerProps) => {
     ...attributes
   } = props
 
-  const classNames = propsClassNames({classNames: _classNames})
-  const className = `${_className ? `${_className} ` : ''}${classNames('toggler', {position})}`
+  const navbarCN = propsClassNames({classNames: _classNames})
+  const className = classNames(_className, navbarCN('toggler', {position}))
 
   let role
   if (type === 'button') {
@@ -38,7 +39,7 @@ const NavbarToggler = (props: NavbarTogglerProps) => {
 
   return (
     <Tag className={className} {...attributes} role={role}>
-      {children || <span className={classNames('navbar-toggler-icon')} />}
+      {children || <span className={navbarCN('navbar-toggler-icon')} />}
     </Tag>
   )
 }

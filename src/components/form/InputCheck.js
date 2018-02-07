@@ -5,11 +5,11 @@ import isEqual from 'lodash/isEqual'
 import getId from 'lodash/uniqueId'
 import includes from 'lodash/includes'
 
-import {propsClassNames} from '../utils/classnamesUtils'
-import FormControl from './Control'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
+import FormControl from '@deboxsoft/webapp/form/Control'
 import cleanProps from './helper/clean-props'
 
-import type {ControlProps} from './helper/form-control-types'
+import type {ControlProps} from '@deboxsoft/webapp/form/Control-Base'
 
 export type ValueType = {
   id?: string | number,
@@ -40,31 +40,44 @@ export class InputCheck extends Component<InputCheckProps> {
   }
 
   componentWillMount() {
-    // set value default
-    const {formControl, multiple, values = defaultProps.values} = this.props
-    if (multiple) {
-      const tmp: Array<*> = []
-      values.forEach((option: ValueType) => {
-        if (option.checked) {
-          tmp.push(option.value)
-        }
-      })
-      formControl && formControl.setValue(tmp)
-    } else {
-      let tmp: string
-      values.some((option: ValueType) => {
-        if (option.checked) {
-          tmp = option.value
-          return true
-        }
-        return false
-      })
-      formControl && formControl.setValue(tmp)
-    }
+    const {multiple, values = defaultProps.values, value} = this.props
+    this.setFormControlValue(multiple, values, value)
+  }
+
+  componentWillReceiveProps(nextProps: InputCheckProps) {
+    this.setFormControlValue(nextProps.multiple, nextProps.values, nextProps.value)
   }
 
   shouldComponentUpdate(nextProps: InputCheckProps) {
     return !isEqual(this.props, nextProps)
+  }
+
+  setFormControlValue(multiple?: ?boolean, values?: Array<ValueType>, value?: any) {
+    const formControl = this.props.formControl
+    if (multiple) {
+      const tmp: Array<*> = []
+      values &&
+        values.forEach((option: ValueType) => {
+          option.checked = value
+            ? Array.isArray(value) ? value.includes(option.value) : isEqual(value, option.value)
+            : option.checked
+          if (option.checked) {
+            tmp.push(option.value)
+          }
+        })
+      formControl && formControl.setValue(tmp)
+    } else {
+      let tmp: string
+      values &&
+        values.some((option: ValueType) => {
+          if (option.checked) {
+            tmp = option.value
+            return true
+          }
+          return false
+        })
+      formControl && formControl.setValue(tmp)
+    }
   }
 
   changeValue: Function = (event: SyntheticEvent<HTMLInputElement>) => {
@@ -100,7 +113,14 @@ export class InputCheck extends Component<InputCheckProps> {
     const className = classNames(type)
     return (
       <label htmlFor={attributes.id} className={classNames('label')} key={`label-${attributes.id}`}>
-        <input {...cleanProps(attributes)} ref={getRef} type={type} className={className} onChange={onChange} disabled={disabled} />
+        <input
+          {...cleanProps(attributes)}
+          ref={getRef}
+          type={type}
+          className={className}
+          onChange={onChange}
+          disabled={disabled}
+        />
         {labelName}
       </label>
     )

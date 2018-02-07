@@ -2,7 +2,7 @@
 
 import React from 'react'
 import type {Node} from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type BadgeProps = {
   color?: string,
@@ -19,7 +19,14 @@ const defaultProps = {
 }
 
 const Badge = (props: BadgeProps) => {
-  const {className: _className, classNames: _classNames, color = defaultProps.color, pill, tag: Tag = defaultProps.tag, ...attributes} = props
+  const {
+    className: _className,
+    classNames: _classNames,
+    color = defaultProps.color,
+    pill,
+    tag: Tag = defaultProps.tag,
+    ...attributes
+  } = props
 
   const classNames = propsClassNames({classNames: _classNames})
   const className = `${_className ? `${_className} ` : ''}${classNames(null, {color, pill})}`

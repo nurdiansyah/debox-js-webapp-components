@@ -1,6 +1,9 @@
 import React from 'react'
 
-import {Form, InputCheck, getFormBlock, getInputCheckBlock} from '../index'
+import {Form, InputCheck} from '../index'
+import {bemStylesFactory} from '@deboxsoft/webapp/utils/classnamesUtils'
+
+const styles = bemStylesFactory({inputCheck: 'INPUT-CHECK'})
 
 const values = [
   {label: 'Mangga', value: 'mangga'},
@@ -11,11 +14,9 @@ const values = [
 
 describe('form/Radio', () => {
   it('should running no error', () => {
-    const formBlock = getFormBlock({})
-    const inputCheckBlock = getInputCheckBlock({})
     const wrapper = render(
-      <Form block={formBlock}>
-        <InputCheck block={inputCheckBlock} name="buah" values={values} label="label" multiple />
+      <Form styles={styles}>
+        <InputCheck styles={styles} name="buah" values={values} label="label" multiple />
       </Form>
     )
     expect(wrapper).toMatchSnapshot()

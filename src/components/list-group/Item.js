@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type ListGroupItemProps = {
   tag?: React$ElementType,
@@ -21,7 +21,16 @@ const handleDisabledOnClick = e => {
 }
 
 const ListGroupItem = (props: ListGroupItemProps) => {
-  const {className: _className, classNames: _classNames, tag: Tag = defaultProps.tag, active, disabled, action, color, ...attributes} = props
+  const {
+    className: _className,
+    classNames: _classNames,
+    tag: Tag = defaultProps.tag,
+    active,
+    disabled,
+    action,
+    color,
+    ...attributes
+  } = props
 
   const classNames = propsClassNames({classNames: _classNames})
   const className = `${_className ? `${_className} ` : ''}${classNames('item', {

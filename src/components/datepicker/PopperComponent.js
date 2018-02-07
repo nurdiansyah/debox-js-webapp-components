@@ -4,7 +4,7 @@ import React from 'react'
 import {type Placement, type Modifiers} from 'popper.js'
 import {Manager, Target, Popper} from 'react-popper'
 
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
 import {BLOCK_CALENDAR_ID} from './constants'
 
 type PopperComponentProps = {

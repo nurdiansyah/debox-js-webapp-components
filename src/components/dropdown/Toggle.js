@@ -4,7 +4,7 @@ import React, {PureComponent} from 'react'
 
 import Button from '../button/Button'
 import Anchor from '../button/Link'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type DropdownToggleProps = {
   caret?: boolean,

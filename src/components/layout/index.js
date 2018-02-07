@@ -3,7 +3,7 @@
 import _Container, {type ContainerProps} from './Container'
 import _Columns, {type ColumnsProps} from './Columns'
 import _Column, {type ColumnProps} from './Column'
-import {injectClassNames, type StylesProps} from '../utils/classnamesUtils'
+import {injectClassNames, type StylesProps} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export const Container: React$ComponentType<ContainerProps & StylesProps> = injectClassNames('container')(_Container)
 export const Columns: React$ComponentType<ColumnsProps & StylesProps> = injectClassNames('grid')(_Columns)

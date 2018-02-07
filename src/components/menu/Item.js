@@ -15,7 +15,12 @@ const defaultProps = {
 }
 
 const NavItem = (props: MenuItemProps) => {
-  const {className: _className, classNames = defaultProps.classNames, tag: Tag = defaultProps.tag, ...attributes} = props
+  const {
+    className: _className,
+    classNames = defaultProps.classNames,
+    tag: Tag = defaultProps.tag,
+    ...attributes
+  } = props
 
   const className = classNames(_className || 'nav-item')
 

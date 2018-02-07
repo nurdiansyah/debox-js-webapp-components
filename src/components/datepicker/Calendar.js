@@ -30,11 +30,11 @@ import {
   allDaysDisabledAfter,
   getEffectiveMinDate,
   getEffectiveMaxDate
-} from '../utils/dateUtils'
+} from '@deboxsoft/webapp/utils/dateUtils'
 
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
 
-import type {HighlighDateType} from '../utils/dateUtils'
+import type {HighlighDateType} from '@deboxsoft/webapp/utils/dateUtils'
 import {BLOCK_CALENDAR_ID} from './constants'
 
 const DROPDOWN_FOCUS_CLASSNAMES = ['year-select', 'month-select']
@@ -286,7 +286,9 @@ export default class Calendar extends PureComponent<CalendarProps, State> {
       [0, 1, 2, 3, 4, 5, 6].map(offset => {
         const day = addDays(cloneDate(startOfWeek), offset)
         const localeData = getLocaleData(day)
-        const weekDayName = this.props.useWeekdaysShort ? getWeekdayShortInLocale(localeData, day) : getWeekdayMinInLocale(localeData, day)
+        const weekDayName = this.props.useWeekdaysShort
+          ? getWeekdayShortInLocale(localeData, day)
+          : getWeekdayMinInLocale(localeData, day)
         return (
           <div key={offset} className={this.blockClass('day-name')}>
             {weekDayName}
@@ -304,7 +306,12 @@ export default class Calendar extends PureComponent<CalendarProps, State> {
     }
     return (
       // eslint-disable-next-line jsx-a11y/anchor-has-content
-      <a className={this.blockClass('navigation', {previous: true})} onClick={this.decreaseMonth} role="button" tabIndex={0} />
+      <a
+        className={this.blockClass('navigation', {previous: true})}
+        onClick={this.decreaseMonth}
+        role="button"
+        tabIndex={0}
+      />
     )
   }
 
@@ -405,7 +412,10 @@ export default class Calendar extends PureComponent<CalendarProps, State> {
         >
           <div className={this.blockClass('header')}>
             {this.renderCurrentMonth(monthDate)}
-            <div className={this.blockClass('header-dropdown', {[dropdownMode]: true})} onFocus={this.handleDropdownFocus}>
+            <div
+              className={this.blockClass('header-dropdown', {[dropdownMode]: true})}
+              onFocus={this.handleDropdownFocus}
+            >
               {this.renderMonthDropdown(i !== 0)}
               {this.renderYearDropdown(i !== 0)}
             </div>

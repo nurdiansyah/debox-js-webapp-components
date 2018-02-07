@@ -1,7 +1,7 @@
 // @flow
 
 import React, {PureComponent} from 'react'
-import {propsClassNames} from '../utils/classnamesUtils'
+import {propsClassNames} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export type CarouselItemProps = {
   src: string,

@@ -4,7 +4,7 @@ import _Modal, {type ModalProps} from './Modal'
 import _ModalBody, {type ModalBodyProps} from './Body'
 import _ModalFooter, {type ModalFooterProps} from './Footer'
 import _ModalHeader, {type ModalHeaderProps} from './Header'
-import {injectClassNames, type StylesProps} from '../utils/classnamesUtils'
+import {injectClassNames, type StylesProps} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 export const Modal: React$ComponentType<ModalProps & StylesProps> = injectClassNames('modal')(_Modal)
 export const ModalBody: React$ComponentType<ModalBodyProps & StylesProps> = injectClassNames('modal')(_ModalBody)

@@ -6,7 +6,7 @@ import type {Moment} from 'moment'
 import type {Placement} from 'popper.js'
 import onClickOutside from 'react-onclickoutside'
 import {Input} from '../form'
-import type {HighlighDateType} from '../utils/dateUtils'
+import type {HighlighDateType} from '@deboxsoft/webapp/utils/dateUtils'
 import {
   newDate,
   now,
@@ -36,12 +36,12 @@ import {
   parseDate,
   safeDateFormat,
   getHighLightDaysMap
-} from '../utils/dateUtils'
+} from '@deboxsoft/webapp/utils/dateUtils'
 
 import {BLOCK_DATEPICKER_ID} from './constants'
 import PopperComponent from './PopperComponent'
 import Calendar from './Calendar'
-import {classNamesFactory, type BemType} from '../utils/classnamesUtils'
+import {classNamesFactory, type BemType} from '@deboxsoft/webapp/utils/classnamesUtils'
 
 const WrappedCalendar = onClickOutside(Calendar)
 
@@ -217,7 +217,9 @@ class DatePicker extends React.PureComponent<DatePickerProps, State> {
     const minDate = getEffectiveMinDate(this.props)
     const maxDate = getEffectiveMaxDate(this.props)
     const boundedPreSelection =
-      minDate && isBefore(defaultPreSelection, minDate) ? minDate : maxDate && isAfter(defaultPreSelection, maxDate) ? maxDate : defaultPreSelection
+      minDate && isBefore(defaultPreSelection, minDate)
+        ? minDate
+        : maxDate && isAfter(defaultPreSelection, maxDate) ? maxDate : defaultPreSelection
     return {
       open: this.props.startOpen || false,
       preventFocus: false,
@@ -359,7 +361,8 @@ class DatePicker extends React.PureComponent<DatePickerProps, State> {
 
   setPreSelection(date: Moment) {
     const isDateRangePresent = typeof this.props.minDate !== 'undefined' && typeof this.props.maxDate !== 'undefined'
-    const isValidDateSelection = isDateRangePresent && date ? isDayInRange(date, this.props.minDate, this.props.maxDate) : true
+    const isValidDateSelection =
+      isDateRangePresent && date ? isDayInRange(date, this.props.minDate, this.props.maxDate) : true
     if (isValidDateSelection) {
       this.setState({
         preSelection: date
@@ -603,7 +606,9 @@ class DatePicker extends React.PureComponent<DatePickerProps, State> {
 
   renderClearButton() {
     if (this.props.isClearAble && this.props.selected != null) {
-      return <a className={this.blockClass('close-icon')} href="#" onClick={this.onClearClick} role="button" tabIndex={0} />
+      return (
+        <a className={this.blockClass('close-icon')} href="#" onClick={this.onClearClick} role="button" tabIndex={0} />
+      )
     }
     return null
   }

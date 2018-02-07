@@ -1,3 +1,3 @@
 module.exports = {
-  preset: '@debox-devel/webapp'
+  preset: '@deboxsoft/devel-webapp'
 }

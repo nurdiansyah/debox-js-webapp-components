@@ -1,13 +1,12 @@
 // @flow
 
-import _FontIcon, {type FontIconProps} from './FontIcon'
-import _FontAwesome, {type FontAwesomeProps} from './FontAwesome'
-import {injectClassNames, type StylesProps} from '../utils/classnamesUtils'
+import _Icon, {type IconProps} from './Icon'
+import _IconFa, {type IconFaProps} from './IconFa'
 
-export const FontIcon: React$ComponentType<FontIconProps & StylesProps> = injectClassNames('icon')(_FontIcon)
-export const FontAwesome: React$ComponentType<FontAwesomeProps & StylesProps> = injectClassNames('icon')(_FontAwesome)
+export const Icon: React$ComponentType<IconProps> = _Icon
+export const IconFa: React$ComponentType<IconFaProps> = _IconFa
 
 export default {
-  FontIcon: _FontIcon,
-  FontAwesome: _FontAwesome
+  Icon: _Icon,
+  IconFa: _IconFa
 }
